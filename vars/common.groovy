@@ -11,7 +11,7 @@ def test() {
     pipeline {
         agent any
         stages {
-            stage('test-cases') {
+            stage('testing') {
                 parallel {
                     stage('Unit testing') {
                         steps {
