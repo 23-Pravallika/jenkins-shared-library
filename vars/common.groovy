@@ -16,21 +16,21 @@ def test(){
                     stage('Unit testing') {
                         steps {
                             //npm test or mvn test or py test 
-                            echo "Unit Testing Started"
-                            echo "Unit Testing Completed"                       
+                            sh "echo Unit Testing Started"
+                            sh "echo Unit Testing Completed"                       
                         }
                     }
                     stage('Integration testing') {
                         steps {
                             //npm verify or mvn verify or pr verify
-                            echo "Integration Testing Started"
-                            echo "Integration Testing Completed"
+                            sh "echo Integration Testing Started"
+                            sh "echo Integration Testing Completed"
                         }
                     }
                     stage('Functional testing') {
                         steps {
-                            echo "Functional Testing Started"
-                            echo "Functional Testing Started"
+                            sh "echo Functional Testing Started"
+                            sh "echo Functional Testing Started"
                         }
                     }
                 }
