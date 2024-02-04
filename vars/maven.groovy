@@ -31,6 +31,13 @@ def call(){
                         common.sonarChecks()
                     }
                 }
+            }
+            stage('test cases'){
+                steps{
+                    script{
+                        common.test()
+                    }
+                }
             }            
         }
     }

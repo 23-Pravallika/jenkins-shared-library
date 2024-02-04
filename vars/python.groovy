@@ -31,6 +31,13 @@ def call(){
                     }
                 }
             }
+            stage('test cases'){
+                steps{
+                    script{
+                        common.test()
+                    }
+                }
+            }
         }
     }
 }
