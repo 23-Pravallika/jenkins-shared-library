@@ -7,30 +7,3 @@ def sonarChecks(){
 
 }
 
-def test(){
-    pipeline {
-        agent any
-        stages {
-            stage('Unit testing') {
-                steps {
-                    //npm test or mvn test or py test 
-                    sh "echo Unit Testing Started"
-                    sh "echo Unit Testing Completed"                       
-                }
-            }
-            stage('Integration testing') {
-                steps {
-                    //npm verify or mvn verify or pr verify
-                    sh "echo Integration Testing Started"
-                    sh "echo Integration Testing Completed"
-                }
-            }
-            stage('Functional testing') {
-                steps {
-                    sh "echo Functional Testing Started"
-                    sh "echo Functional Testing Started"
-                }
-            }
-        }   
-    }
-}
