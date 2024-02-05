@@ -30,7 +30,6 @@ def call(){
                     script {
                         env.ARGS="-Dsonar.sources=."
                         common.sonarChecks()
-                        sh 'node --version'
                     }
                 }
             }
