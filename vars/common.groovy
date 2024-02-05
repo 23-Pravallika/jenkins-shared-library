@@ -1,6 +1,6 @@
 def sonarChecks(){
     sh '''
-            sonar-scanner -Dsonar.host.url=http://172.31.2.195:9000 ${ARGS} -Dsonar.projectKey=${COMPONENT} -Dsonar.login=${SONAR_USR} -Dsonar.password=${SONAR_PSW} -Dsonar.javascript.node.maxspace=4096
+            sonar-scanner -Dsonar.javascript.node.maxspace=8192 -Dsonar.host.url=http://172.31.2.195:9000 ${ARGS} -Dsonar.projectKey=${COMPONENT} -Dsonar.login=${SONAR_USR} -Dsonar.password=${SONAR_PSW} 
             curl https://gitlab.com/thecloudcareers/opensource/-/raw/master/lab-tools/sonar-scanner/quality-gate > quality-gate.sh
             bash -x quality-gate.sh ${SONAR_USR} ${SONAR_PSW} ${SONAR_URL} ${COMPONENT}
     '''        
