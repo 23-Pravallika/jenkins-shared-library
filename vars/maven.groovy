@@ -23,11 +23,11 @@ def call(){
                     }      
                 }                
             }
-            stage('sonar checks'){
-                steps{
-                    script{
-                        //sh "mvn clean compile"
-                        //env.ARGS="-Dsonar.java.binaries=target/"
+            stage('Sonar Checks') {
+                steps {
+                    script {
+                        sh "mvn clean compile"
+                        env.ARGS="-Dsonar.java.binaries=target/"
                         common.sonarChecks()
                     }
                 }
