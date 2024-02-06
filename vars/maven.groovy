@@ -5,6 +5,7 @@ def call(){
         sh "mvn clean compile"
         env.ARGS="-Dsonar.java.binaries=target/"
         common.sonarChecks()
+        common.testcases()
     }
 }
 

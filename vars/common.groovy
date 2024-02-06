@@ -49,5 +49,23 @@ def lintchecks(){
 }
 
 def testcases(){
-    stage('')
+    stage('test cases'){
+        def stages = [:]
+
+        stages["Unit testingac"] = {
+            echo "Unit Testing Started"
+            echo "Unit Testing Completed"
+             //sh npm tset or mvn test
+        }
+        stages["Integration testingac"] = {
+            echo "Integration Testing Started"
+            echo "Integration Testing Completed"
+            // sh mvn verify or npm verify
+        }
+        stages["Functional testingac"] = {
+            echo "Functional Testing Started"
+            echo "Functional Testing Completed"
+        }
+        parallel(stages)
+    }
 }
