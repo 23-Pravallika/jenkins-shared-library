@@ -8,6 +8,7 @@ def call (){
         parameters([
             choice(choices: 'dev\nprod', description: "choose the environment", name: "ENV"),
             choice(choices: 'apply\ndestroy', description: "choose apply or destroy", name: "ACT"),
+            string(choices: 'APP_VERSION', description: "Enter the Backend Version To Ve Deployed - Ignore this if it is a backend component", name: "APP_VERSION"),
         ]),
     ])
     node("Jenkins-WS") {
@@ -25,12 +26,14 @@ def call (){
         stage('terraform plan') {
             sh '''
                     cd ${TFDIR}
+                    export TF_VAR_APP_VERSION=${APP_VERSION}
                     terraform plan -var-file=${ENV}-env/${ENV}.tfvars
             '''
         }
         stage("terraform ${ACT}"){
             sh '''
                     cd ${TFDIR}
+                    export TF_VAR_APP_VERSION=${APP_VERSION}
                     terraform ${ACT} -var-file=${ENV}-env/${ENV}.tfvars -auto-approve
             '''
         }
