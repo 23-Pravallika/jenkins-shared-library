@@ -77,31 +77,23 @@ def artifacts(){
     }
     stage('Preparing the artifact'){
         if (env.APP_TYPE == "nodejs") {
-            sh '''
-                    npm install
-                    echo Preparing the artifacts
-                    zip ${COMPONENT}-${TAG_NAME}.zip node_modules server.js
-            '''
+            sh "npm install"
+            sh "echo Preparing the artifacts"
+            // sh "zip ${COMPONENT}-${TAG_NAME}.zip node_modules server.js"
         }
         else if (env.APP_TYPE == "maven") {
-            sh '''
-                    mvn clean package
-                    mv zip target/${COMPONENT}-1.0.jar ${COMPONENT}.jar
-                    zip ${COMPONENT}-${TAG_NAME}.zip ${COMPONENT}.jar
-            '''
+            sh "mvn clean package"
+            sh "mv zip target/${COMPONENT}-1.0.jar ${COMPONENT}.jar"
+            // sh "zip ${COMPONENT}-${TAG_NAME}.zip ${COMPONENT}.jar"
         }
         else if (env.APP_TYPE == "python") {
-           sh '''
-                    echo Preparing the artifacts
-                    zip ${COMPONENT}-${TAG_NAME}.zip *.py *.ini requirements.txt
-            '''
+           sh "echo Preparing the artifacts"
+        //    sh "zip ${COMPONENT}-${TAG_NAME}.zip *.py *.ini requirements.txt"
         }
         else{
-            sh '''
-                    echo "Frontend Component Is Executing"
-                    cd static/
-                    zip ../${COMPONENT}-${TAG_NAME}.zip *
-            '''
+            sh "echo Frontend Component Is Executing"
+            sh "cd static/"
+            // sh "zip ../${COMPONENT}-${TAG_NAME}.zip *"
         }
     }
     // stage("Uploading the artifact"){
