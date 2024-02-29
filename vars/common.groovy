@@ -74,7 +74,6 @@ def artifacts(){
     stage('Checking the Release'){
         // env.UPLOAD_STATUS=sh(returnStdout: true, script: "curl -L -s http://${NEXUS_URL}/service/rest/repository/browse/${COMPONENT} | grep ${COMPONENT}-{TAG_NAME}.zip || true ")
         // print UPLOAD_STATUS
-        env.UPLOAD_STATUS=sh( git branch: 'main', url:"https://github.com/23-Pravallika/${COMPONENT}.git" | grep ${COMPONENT}-{TAG_NAME}.zip || true)
     }
     stage('Preparing the artifact'){
         if (env.APP_TYPE == "nodejs") {
